@@ -1,0 +1,35 @@
+micronaut:
+  application:
+    name: hexdemo
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+      swagger-ui:
+        paths: classpath:META-INF/swagger/views/swagger-ui
+        mapping: /swagger-ui/**
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 'demo'
+    driverClassName: org.postgresql.Driver
+    dbType: postgres
+    dialect: POSTGRES
+
+mongodb:
+  uri: mongodb://mongo:demo@localhost:27017/test?authSource=admin
+  uuid-representation: standard
+
+flyway:
+  datasources:
+    default:
+      enabled: true
+
+kafka:
+  bootstrap:
+    servers: localhost:9092
+  consumers:
+    key-deserializer: org.apache.kafka.common.serialization.UUIDDeserializer
